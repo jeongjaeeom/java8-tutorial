@@ -13,15 +13,19 @@ public class Lambda4 {
     int num = 1;
 
     Lambda2.Converter<Integer, String> stringConverter = (from) -> String.valueOf(from + num);
-
     String convert = stringConverter.convert(2);
     System.out.println(convert); // 3
 
     Lambda2.Converter<Integer, String> stringConverter2 = (from) -> {
       outerNum = 13;
+      outerStaticNum = 72;
       return String.valueOf(from);
     };
-
+    String convert2 = stringConverter2.convert(2);
+    System.out.println(convert2); // 3
+    System.out.println(outerNum);
+    System.out.println(outerStaticNum);
+    
     String[] array = new String[1];
     Lambda2.Converter<Integer, String> stringConverter3 = (from) -> {
       array[0] = "Hi there";
